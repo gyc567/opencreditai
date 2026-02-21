@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createAgent, findAgentByMoltbookId } from "@/lib/auth";
+import { createAgent } from "@/lib/auth";
 import { query } from "@/lib/db/client";
 import type { Agent } from "@/lib/db/types";
 
@@ -27,14 +27,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (name.length > 100) {
+      return NextResponse.json(
+        { success: false, error: "Name must be 100 characters or less" },
+        { status: 400 }
+      );
+    }
+
+    if (description.length > 1000) {
+      return NextResponse.json(
+        { success: false, error: "Description must be 1000 characters or less" },
+        { status: 400 }
+      );
+    }
+
+    const sanitizedDescription = description.replace(/<[^>]*>/g, "");
+
     const moltbookResponse = await fetch(`${MOLTBOOK_API_URL}/agents/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-API-Key": process.env.MOLTBOOK_API_KEY || "",
       },
-      body: JSON.stringify({ name, description }),
+      body: JSON.stringify({ name, description: sanitizedDescription }),
     });
+
+    if (!moltbookResponse.ok) {
+      throw new Error(`Moltbook API returned ${moltbookResponse.status}`);
+    }
 
     const moltbookData: MoltbookRegisterResponse = await moltbookResponse.json();
 
@@ -53,7 +73,8 @@ export async function POST(request: NextRequest) {
           claim_url: claimUrl,
           verification_code: verificationCode,
         },
-        important: "Save your API key. You will need to tweet this verification code to claim your agent.",
+        warning: "API_KEY_ONE_TIME_DISPLAY: Store securely. This key will not be shown again.",
+        important: "Save your API key securely. You will need to tweet this verification code to claim your agent.",
       });
     }
 
@@ -69,7 +90,8 @@ export async function POST(request: NextRequest) {
         claim_url,
         verification_code,
       },
-      important: "Save your API key. You will need to tweet this verification code to claim your agent.",
+      warning: "API_KEY_ONE_TIME_DISPLAY: Store securely. This key will not be shown again.",
+      important: "Save your API key securely. You will need to tweet this verification code to claim your agent.",
     });
   } catch (error) {
     console.error("Agent registration error:", error);

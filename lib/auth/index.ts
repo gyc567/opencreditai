@@ -3,8 +3,30 @@ import jwt from "jsonwebtoken";
 import { query } from "../db/client";
 import type { User, Agent } from "../db/types";
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-in-production";
 const SALT_ROUNDS = 10;
+
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== "phase-production-build") {
+      throw new Error("JWT_SECRET environment variable is required in production");
+    }
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("WARNING: Using default JWT secret in development. Set JWT_SECRET for production.");
+    }
+    return "dev-secret-change-in-production";
+  }
+  return secret;
+}
+
+let _jwtSecret: string | null = null;
+
+function jwtSecret(): string {
+  if (!_jwtSecret) {
+    _jwtSecret = getJwtSecret();
+  }
+  return _jwtSecret;
+}
 
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);
@@ -17,14 +39,14 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
 export function generateToken(user: User, agent: Agent | null): string {
   return jwt.sign(
     { userId: user.id, email: user.email, agentId: agent?.id },
-    JWT_SECRET,
+    jwtSecret(),
     { expiresIn: "7d" }
   );
 }
 
 export function verifyToken(token: string): { userId: number; email: string; agentId: number | null } | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as { userId: number; email: string; agentId: number | null };
+    return jwt.verify(token, jwtSecret()) as { userId: number; email: string; agentId: number | null };
   } catch {
     return null;
   }
