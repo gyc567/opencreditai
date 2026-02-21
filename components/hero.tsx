@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Terminal, Download, Code2, Box } from "lucide-react";
@@ -10,9 +7,9 @@ import { en } from "@/lib/i18n";
 const t = en.hero;
 
 const stats = [
-  { icon: Box, value: `${totalSkills}+`, label: t.stats.skills, color: "text-accent" },
-  { icon: Code2, value: `${totalCategories}`, label: t.stats.categories, color: "text-accent" },
-  { icon: Download, value: "50k+", label: t.stats.downloads, color: "text-accent" },
+  { icon: Box, value: `${totalSkills}+`, label: t.stats.skills },
+  { icon: Code2, value: `${totalCategories}`, label: t.stats.categories },
+  { icon: Download, value: "50k+", label: t.stats.downloads },
 ];
 
 export function Hero() {
@@ -21,12 +18,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="animate-fade-in-up animate-delay-0">
           <Badge
             variant="secondary"
             className="mb-6 bg-secondary text-muted-foreground border-border font-mono text-xs"
@@ -34,37 +26,19 @@ export function Hero() {
             <Terminal className="w-3 h-3 mr-1.5" />
             {t.badge}
           </Badge>
-        </motion.div>
+        </div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
-        >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 animate-fade-in-up animate-delay-100">
           <span className="text-foreground">{t.headline[0]}</span>
           <br />
           <span className="text-accent">{t.headline[1]}</span>
-        </motion.h1>
+        </h1>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed mb-8"
-        >
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 animate-fade-in-up animate-delay-200">
           {t.subtitle}
-        </motion.p>
+        </p>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 animate-fade-in-up animate-delay-300">
           <Button
             size="lg"
             className="bg-accent text-accent-foreground hover:bg-accent/90 font-mono text-sm"
@@ -85,21 +59,15 @@ export function Hero() {
               {t.cta.installGuide}
             </a>
           </Button>
-        </motion.div>
+        </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
-          className="grid grid-cols-3 gap-4 max-w-lg mx-auto"
-        >
+        <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto animate-fade-in-up animate-delay-400">
           {stats.map((stat) => (
             <div
               key={stat.label}
               className="p-4 rounded-lg bg-secondary border border-border"
             >
-              <stat.icon className={`w-5 h-5 ${stat.color} mx-auto mb-2`} />
+              <stat.icon className="w-5 h-5 text-accent mx-auto mb-2" />
               <div className="text-xl font-bold text-foreground font-mono">
                 {stat.value}
               </div>
@@ -108,15 +76,9 @@ export function Hero() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-          className="mt-12"
-        >
+        <div className="mt-12 animate-fade-in-up animate-delay-500">
           <p className="text-xs text-muted-foreground mb-4 font-mono">
             {t.supportedFrameworks}
           </p>
@@ -130,7 +92,7 @@ export function Hero() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
