@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import { query } from "../db/client";
 import type { User, Agent } from "../db/types";
 
@@ -13,7 +14,6 @@ function getJwtSecret(): string {
     }
     if (process.env.NODE_ENV !== "production") {
       // 生成一个随机的开发密钥
-      const crypto = require('crypto');
       return 'dev_' + crypto.randomBytes(32).toString('hex');
     }
     throw new Error("JWT_SECRET is required");
