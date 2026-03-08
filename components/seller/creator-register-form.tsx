@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,6 +42,13 @@ export function CreatorRegisterForm({
     bio: "",
     category: "general",
   });
+
+  // Sync form address when walletAddress prop changes (fixes "Invalid wallet address" error)
+  useEffect(() => {
+    if (walletAddress && walletAddress !== formData.address) {
+      setFormData((prev) => ({ ...prev, address: walletAddress }));
+    }
+  }, [walletAddress]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
