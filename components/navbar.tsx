@@ -37,11 +37,6 @@ export function Navbar({ onSearch }: NavbarProps) {
     { label: t.installGuide, href: "#install" },
     { label: t.faq, href: "#faq" },
   ];
-    { label: t.skills, href: "#skills" },
-    { label: t.categories, href: "#categories" },
-    { label: t.installGuide, href: "#install" },
-    { label: t.faq, href: "#faq" },
-  ];
 
   return (
     <header
@@ -63,17 +58,6 @@ export function Navbar({ onSearch }: NavbarProps) {
               alt="ClawSkillStore"
               className="h-8 w-auto"
             />
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-2 group"
-          >
-            <div className="w-8 h-8 rounded bg-border flex items-center justify-center group-hover:bg-accent transition-colors">
-              <Terminal className="w-4 h-4 text-foreground" />
-            </div>
-            <span className="font-mono text-sm font-medium text-foreground group-hover:text-accent transition-colors">
-              OpenClawSkills
-            </span>
           </a>
 
           {/* Desktop Navigation */}
