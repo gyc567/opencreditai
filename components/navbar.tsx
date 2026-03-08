@@ -31,6 +31,12 @@ export function Navbar({ onSearch }: NavbarProps) {
   };
 
   const navLinks = [
+    { label: "Claw Dojo", href: "/dojo" },
+    { label: t.skills, href: "#skills" },
+    { label: t.categories, href: "#categories" },
+    { label: t.installGuide, href: "#install" },
+    { label: t.faq, href: "#faq" },
+  ];
     { label: t.skills, href: "#skills" },
     { label: t.categories, href: "#categories" },
     { label: t.installGuide, href: "#install" },
