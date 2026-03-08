@@ -3,10 +3,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { x402Middleware } from "@/lib/x402/middleware";
+import { getPlatformWallet } from "@/lib/config/platform";
 import { query } from "@/lib/db/client";
 
 // Platform wallet address (should be from environment)
-const PLATFORM_WALLET = process.env.PLATFORM_WALLET || "0x742d35Cc6634C0532925a3b844Bc9e7595f0fE12";
+const PLATFORM_WALLET = getPlatformWallet();
 
 // Price tiers for stock analysis
 const STOCK_PRICING = {

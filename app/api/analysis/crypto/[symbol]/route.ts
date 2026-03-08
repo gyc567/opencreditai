@@ -3,8 +3,9 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { x402Middleware } from "@/lib/x402/middleware";
+import { getPlatformWallet } from "@/lib/config/platform";
 
-const PLATFORM_WALLET = process.env.PLATFORM_WALLET || "0x742d35Cc6634C0532925a3b844Bc9e7595f0fE12";
+const PLATFORM_WALLET = getPlatformWallet();
 
 const CRYPTO_PRICING = {
   basic: "0.001",
