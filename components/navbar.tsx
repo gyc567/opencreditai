@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Menu, X, Github, Terminal, ArrowRight } from "lucide-react";
+import { Search, Menu, X, Github, ArrowRight } from "lucide-react";
 import { en } from "@/lib/i18n";
 
 const t = en.nav;
@@ -32,6 +32,7 @@ export function Navbar({ onSearch }: NavbarProps) {
 
   const navLinks = [
     { label: "Claw Dojo", href: "/dojo" },
+    { label: "Sell Skills", href: "/seller" },
     { label: t.skills, href: "#skills" },
     { label: t.categories, href: "#categories" },
     { label: t.installGuide, href: "#install" },

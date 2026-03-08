@@ -4,23 +4,33 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { query } from "@/lib/db/client";
-import { isValidEthAddress } from "@/lib/x402";
+import { requireAuth } from "@/lib/api/auth";
 
 interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
-/**
- * GET /api/v1/creators/[id]/listings - Get all listings for a creator
- */
 export async function GET(
   req: NextRequest,
   { params }: RouteParams
 ) {
+  const authResult = requireAuth(req);
+  if (authResult instanceof NextResponse) {
+    return authResult;
+  }
+
   try {
     const { id } = await params;
+    
+    if (authResult.creatorId.toString() !== id) {
+      return NextResponse.json(
+        { error: "Unauthorized - you can only access your own listings" },
+        { status: 403 }
+      );
+    }
+
     const { searchParams } = new URL(req.url);
-    const status = searchParams.get("status"); // 'draft' | 'published' | 'all'
+    const status = searchParams.get("status");
 
     let sql = `
       SELECT 
@@ -62,26 +72,28 @@ export async function GET(
   }
 }
 
-/**
- * POST /api/v1/creators/[id]/listings - Create new listing
- */
 export async function POST(
   req: NextRequest,
   { params }: RouteParams
 ) {
+  const authResult = requireAuth(req);
+  if (authResult instanceof NextResponse) {
+    return authResult;
+  }
+
   try {
     const { id } = await params;
-    const body = await req.json();
-    const {
-      name,
-      description,
-      category,
-      priceUsd,
-      version,
-      packageUrl,
-    } = body;
+    
+    if (authResult.creatorId.toString() !== id) {
+      return NextResponse.json(
+        { error: "Unauthorized - you can only create listings for yourself" },
+        { status: 403 }
+      );
+    }
 
-    // Validate required fields
+    const body = await req.json();
+    const { name, description, category, priceUsd, version, packageUrl } = body;
+
     if (!name || name.length < 3) {
       return NextResponse.json(
         { error: "Name must be at least 3 characters" },
@@ -96,7 +108,6 @@ export async function POST(
       );
     }
 
-    // Verify creator exists
     const creator = await query(
       "SELECT id, address FROM creators WHERE id = $1",
       [id]
@@ -109,7 +120,6 @@ export async function POST(
       );
     }
 
-    // Create listing
     const result = await query(
       `INSERT INTO listings (
         creator_id,
