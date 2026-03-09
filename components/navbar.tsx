@@ -34,6 +34,7 @@ export function Navbar({ onSearch }: NavbarProps) {
     { label: "Claw Dojo", href: "/dojo" },
     { label: "Sell Skills", href: "/seller" },
     { label: "Blog", href: "/blog" },
+    { label: "Audit", href: "/audit" },
     { label: t.categories, href: "#categories" },
     { label: t.installGuide, href: "#install" },
     { label: t.faq, href: "#faq" },
