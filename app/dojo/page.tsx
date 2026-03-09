@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Zap, Rocket, Cpu, Layers, Sparkles, ArrowRight } from "lucide-react";
 import { SkillPackCard } from "@/components/dojo/skill-pack-card";
 import { InstallCommand } from "@/components/dojo/install-command";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const essentialSkills = [
   "github",
@@ -37,8 +40,12 @@ const expertSkills = [
 const allSkills = [...essentialSkills, ...advancedSkills, ...expertSkills];
 
 export default function ClawDojoPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <main className="min-h-screen pt-14">
+    <main className="min-h-screen bg-[#0a0a0a]">
+      <Navbar onSearch={setSearchQuery} />
+      
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 circuit-grid-dots" />
@@ -184,6 +191,8 @@ export default function ClawDojoPage() {
           </Button>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
