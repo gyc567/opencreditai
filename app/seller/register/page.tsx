@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Navbar } from "@/components/navbar";
 import { CreatorRegisterForm } from "@/components/seller/creator-register-form";
 import { WalletConnect } from "@/components/wallet/connect";
 
@@ -50,6 +51,7 @@ export default function SellerRegisterPage() {
 
   return (
     <main className="min-h-screen pt-14">
+      <Navbar />
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 circuit-grid-dots" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
