@@ -1,6 +1,6 @@
 // Creator's Listings API
 // GET /api/v1/creators/[id]/listings - Get creator's listings
-// POST /api/v1/creators/[id]/listings - Create new listing
+// POST /api/v1/creators/[id]/listings - Create new listing (requires auth)
 
 import { NextRequest, NextResponse } from "next/server";
 import { query } from "@/lib/db/client";
@@ -10,22 +10,27 @@ interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
+/**
+ * GET /api/v1/creators/[id]/listings - Get creator's listings (public)
+ */
 export async function GET(
   req: NextRequest,
   { params }: RouteParams
 ) {
-  const authResult = requireAuth(req);
-  if (authResult instanceof NextResponse) {
-    return authResult;
-  }
-
+  // GET is public - no auth required for reading listings
   try {
     const { id } = await params;
     
-    if (authResult.creatorId.toString() !== id) {
+    // Verify creator exists
+    const creator = await query(
+      "SELECT id, address FROM creators WHERE id = $1",
+      [id]
+    );
+    
+    if (creator.length === 0) {
       return NextResponse.json(
-        { error: "Unauthorized - you can only access your own listings" },
-        { status: 403 }
+        { error: "Creator not found" },
+        { status: 404 }
       );
     }
 
@@ -72,6 +77,9 @@ export async function GET(
   }
 }
 
+/**
+ * POST /api/v1/creators/[id]/listings - Create new listing (requires auth)
+ */
 export async function POST(
   req: NextRequest,
   { params }: RouteParams
