@@ -243,13 +243,12 @@ export function ListingForm({ onSubmit, isLoading = false }: ListingFormProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="packageUrl">Package URL *</Label>
+              <Label htmlFor="packageUrl">Package URL</Label>
               <Input
                 id="packageUrl"
                 placeholder="https://..."
                 value={formData.packageUrl}
                 onChange={(e) => handleChange("packageUrl", e.target.value)}
-                required
               />
             </div>
           </div>

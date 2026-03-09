@@ -41,7 +41,7 @@ describe("ListingForm", () => {
 
   it("renders package URL input", () => {
     render(<ListingForm onSubmit={mockOnSubmit} />);
-    expect(screen.getByLabelText("Package URL *")).toBeInTheDocument();
+    expect(screen.getByLabelText("Package URL")).toBeInTheDocument();
   });
 
   it("renders tags input", () => {

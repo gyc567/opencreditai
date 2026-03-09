@@ -33,7 +33,7 @@ export function Navbar({ onSearch }: NavbarProps) {
   const navLinks = [
     { label: "Claw Dojo", href: "/dojo" },
     { label: "Sell Skills", href: "/seller" },
-    { label: t.skills, href: "#skills" },
+    { label: "Blog", href: "/blog" },
     { label: t.categories, href: "#categories" },
     { label: t.installGuide, href: "#install" },
     { label: t.faq, href: "#faq" },

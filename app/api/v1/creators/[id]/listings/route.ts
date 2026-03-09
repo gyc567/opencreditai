@@ -109,12 +109,7 @@ export async function POST(
       );
     }
 
-    if (!packageUrl) {
-      return NextResponse.json(
-        { error: "Package URL is required" },
-        { status: 400 }
-      );
-    }
+    // packageUrl is now optional - no validation needed
 
     const creator = await query(
       "SELECT id, address FROM creators WHERE id = $1",
@@ -149,7 +144,7 @@ export async function POST(
         category || "general",
         priceUsd || "0",
         version || "1.0.0",
-        packageUrl,
+        packageUrl || null,
       ]
     );
 
