@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Menu, X, Github, ArrowRight } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { en } from "@/lib/i18n";
 
 const t = en.nav;
@@ -74,7 +74,7 @@ export function Navbar({ onSearch }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Search & Actions */}
+          {/* Search */}
           <div className="hidden md:flex items-center gap-3">
             <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
@@ -86,22 +86,6 @@ export function Navbar({ onSearch }: NavbarProps) {
                 className="w-52 pl-8 bg-secondary border-border text-sm font-mono focus:border-accent transition-colors"
               />
             </form>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-border hover:bg-secondary transition-colors font-mono text-xs"
-              asChild
-            >
-              <a
-                href="https://github.com/VoltAgent/awesome-openclaw-skills"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-3.5 h-3.5 mr-2" />
-                {t.github}
-                <ArrowRight className="w-3 h-3 ml-1.5" />
-              </a>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -138,20 +122,6 @@ export function Navbar({ onSearch }: NavbarProps) {
                 {link.label}
               </a>
             ))}
-            <Button
-              variant="outline"
-              className="w-full border-border font-mono text-xs"
-              asChild
-            >
-              <a
-                href="https://github.com/VoltAgent/awesome-openclaw-skills"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-3.5 h-3.5 mr-2" />
-                {t.github}
-              </a>
-            </Button>
           </div>
         </div>
       )}

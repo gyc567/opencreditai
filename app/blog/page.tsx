@@ -1,11 +1,20 @@
+"use client";
+
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { BlogCard } from "@/components/blog/blog-card";
 import { blogPosts } from "@/lib/blog-data";
 
 export default function BlogPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
+      <Navbar onSearch={setSearchQuery} />
+      
       {/* Hero Section */}
-      <section className="py-16 px-4 border-b border-border">
+      <section className="pt-24 pb-16 px-4 border-b border-border">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground font-mono">
             Insights
@@ -27,6 +36,8 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   );
 }
