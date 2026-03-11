@@ -12,18 +12,18 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "Getting Started with ClawSkillStore: Your Complete Guide",
-    excerpt: "Learn how to browse, install, and use AI skills from the ClawSkillStore marketplace. Perfect for first-time users.",
+    title: "Getting Started with OpenCreditAi: Your Complete Guide",
+    excerpt: "Learn how to browse, install, and use AI skills from the OpenCreditAi marketplace. Perfect for first-time users.",
     date: "March 9, 2026",
     readTime: "8 min read",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop",
-    slug: "getting-started-with-clawskillstore",
+    slug: "getting-started-with-opencreditai",
     category: "Getting Started",
   },
   {
     id: "2",
     title: "How to Create Your First Skill Listing",
-    excerpt: "A step-by-step guide to listing your AI skill on ClawSkillStore. From registration to publishing your first skill.",
+    excerpt: "A step-by-step guide to listing your AI skill on OpenCreditAi. From registration to publishing your first skill.",
     date: "March 8, 2026",
     readTime: "10 min read",
     imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",

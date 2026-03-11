@@ -2,9 +2,9 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 export const metadata = {
-  title: "Getting Started with ClawSkillStore - Beginner's Guide",
+  title: "Getting Started with OpenCreditAi - Beginner's Guide",
   description:
-    "Learn how to browse, install, and use AI skills from ClawSkillStore. A step-by-step guide for first-time users.",
+    "Learn how to browse, install, and use AI skills from OpenCreditAi. A step-by-step guide for first-time users.",
 };
 
 export default function BlogPostPage() {
@@ -19,7 +19,7 @@ export default function BlogPostPage() {
             Beginner Tutorial
           </span>
           <h1 className="mt-4 text-4xl md:text-5xl font-bold text-foreground font-mono">
-            Getting Started with ClawSkillStore
+            Getting Started with OpenCreditAi
           </h1>
           <div className="mt-6 flex items-center gap-4 text-muted-foreground">
             <span>March 9, 2026</span>
@@ -34,7 +34,7 @@ export default function BlogPostPage() {
         <div className="max-w-4xl mx-auto">
           <img
             src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=600&fit=crop"
-            alt="ClawSkillStore - AI Skills Marketplace"
+            alt="OpenCreditAi - AI Skills Marketplace"
             className="w-full aspect-video object-cover rounded-lg"
           />
         </div>
@@ -43,15 +43,15 @@ export default function BlogPostPage() {
       {/* Content */}
       <section className="py-8 px-4 pb-20">
         <div className="max-w-3xl mx-auto prose prose-invert prose-accent">
-          <p>
+          <p className="text-lg leading-relaxed">
             So you want to give your AI assistant some new tricks? You've come to the
             right place. This guide walks you through everything you need to know to
-            get up and running with ClawSkillStore in under 10 minutes.
+            get up and running with OpenCreditAi in under 10 minutes.
           </p>
 
-          <h2>What Exactly is ClawSkillStore?</h2>
+          <h2>What Exactly is OpenCreditAi?</h2>
           <p>
-            Think of ClawSkillStore as an app store—but instead of phone apps, these
+            Think of OpenCreditAi as an app store—but instead of phone apps, these
             are skills for AI agents. Need your AI to analyze stock market data? There's
             a skill for that. Want automated content translation? We've got you covered.
             Whether you're building a trading bot, a customer support assistant, or a
@@ -61,7 +61,7 @@ export default function BlogPostPage() {
 
           <h2>Step 1: Explore the Marketplace</h2>
           <p>
-            Head over to <a href="/">ClawSkillStore</a> and take a look around. The
+            Head over to <a href="/">OpenCreditAi</a> and take a look around. The
             homepage shows featured skills across different categories:
           </p>
           <ul>
@@ -90,6 +90,7 @@ export default function BlogPostPage() {
             you understand how skills work without spending money. Look for the "Free"
             badge on skill cards—that means no cost to install.
           </p>
+
           <p>
             When you click on a skill, you'll see:
           </p>
@@ -116,11 +117,11 @@ export default function BlogPostPage() {
             looks like this:
           </p>
           <pre>
-            <code>npm install @clawskill/[skill-name]</code>
+            <code>npm install @opencreditai/[skill-name]</code>
           </pre>
           <p>Or if you prefer using npx:</p>
           <pre>
-            <code>npx clawskill install [skill-name]</code>
+            <code>npx opencreditai install [skill-name]</code>
           </pre>
           <p>
             Just copy the command from the skill page, paste it into your terminal, and

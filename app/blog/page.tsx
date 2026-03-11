@@ -20,7 +20,7 @@ export default function BlogPage() {
             Insights
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Practical guides and tutorials for getting the most out of ClawSkillStore.
+            Practical guides and tutorials for getting the most out of OpenCreditAi.
             From first-time users to experienced sellers.
           </p>
         </div>

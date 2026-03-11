@@ -4,7 +4,7 @@ import { BlogCard } from "./blog-card";
 
 const mockPost = {
   id: "1",
-  title: "Getting Started with ClawSkillStore",
+  title: "Getting Started with OpenCreditAi",
   excerpt: "Learn how to browse and install AI skills from the marketplace.",
   date: "March 9, 2026",
   readTime: "8 min read",
@@ -16,7 +16,7 @@ const mockPost = {
 describe("BlogCard", () => {
   it("renders post title", () => {
     render(<BlogCard post={mockPost} />);
-    expect(screen.getByText("Getting Started with ClawSkillStore")).toBeInTheDocument();
+    expect(screen.getByText("Getting Started with OpenCreditAi")).toBeInTheDocument();
   });
 
   it("renders post excerpt", () => {
@@ -42,7 +42,7 @@ describe("BlogCard", () => {
 
   it("renders image with alt text", () => {
     render(<BlogCard post={mockPost} />);
-    const img = screen.getByAltText("Getting Started with ClawSkillStore");
+    const img = screen.getByAltText("Getting Started with OpenCreditAi");
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute("src", "https://example.com/image.jpg");
   });
