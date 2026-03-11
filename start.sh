@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# OpenClawSkills Marketplace 本地启动脚本
+# OpenCreditAi Marketplace 本地启动脚本
 # 用法: ./start.sh [dev|build|serve] [port]
 
 set -e
@@ -9,7 +9,7 @@ CMD=${1:-dev}
 PORT=${2:-3000}
 
 echo "=========================================="
-echo "  OpenClawSkills Marketplace"
+echo "  OpenCreditAi Marketplace"
 echo "=========================================="
 echo ""
 

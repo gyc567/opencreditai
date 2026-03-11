@@ -1,7 +1,7 @@
 # i18n English Migration Report
 
 ## Summary
-Successfully migrated OpenClawSkills Marketplace from Chinese to English.
+Successfully migrated OpenCreditAi Marketplace from Chinese to English.
 
 ## Changes Made
 
