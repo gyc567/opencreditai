@@ -2,6 +2,79 @@
 
 This file provides guidelines for AI agents operating in this repository.
 
+---
+
+## Mandatory Skills (Triggers)
+
+### $code-change-verification
+
+**Run BEFORE marking work complete** when changes affect runtime code, tests, or build/test behavior.
+
+Use when modifying:
+- `app/` (Next.js pages and API routes)
+- `lib/` (shared libraries)  
+- `components/` (React components)
+- `scripts/` (build/deploy scripts)
+- Test files (`*.test.ts`, `*.test.tsx`)
+- Build configuration (`package.json`, `tsconfig.json`, `eslint.config.mjs`, `vitest.config.ts`)
+
+**Skip for:**
+- Documentation only (`docs/`, `*.md`)
+- `.agents/` (agent configuration)
+- `.github/` (CI configuration)
+
+### $deploy
+
+**Run when** deploying to Vercel (preview or production).
+
+Use:
+- Preview deployment: `$deploy --preview`
+- Production deployment: `$deploy --production`
+
+### $integration-tests
+
+**Run when** adding or modifying API routes, database operations, or end-to-end flows.
+
+Use to verify:
+- API endpoints work correctly
+- Database migrations are safe
+- Integration between components
+
+### $frontend-patterns
+
+**Run when** writing or reviewing frontend code (React components, pages, hooks).
+
+Ensures:
+- Proper use of TypeScript
+- React best practices
+- Accessibility
+- Consistent styling
+
+### $backend-patterns
+
+**Run when** writing or reviewing backend code (API routes, lib functions).
+
+Ensures:
+- Proper error handling
+- Input validation (Zod)
+- Authentication/authorization
+- Rate limiting
+
+### $security-review
+
+**Run when** adding:
+- Authentication (wallet, JWT)
+- Payment processing
+- User input handling
+- File uploads
+- API endpoints
+
+---
+
+## Project Overview
+
+This file provides guidelines for AI agents operating in this repository.
+
 ## Project Overview
 
 - **Type**: Next.js 16 + React 19 + TypeScript application
