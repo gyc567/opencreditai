@@ -203,7 +203,7 @@ function ClaimContent() {
                 </div>
                 <CardTitle>Agent Claimed Successfully!</CardTitle>
                 <CardDescription>
-                  This agent is now linked to your wallet and verified.
+                  This agent is now linked to your wallet and verified on X.com.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -221,9 +221,9 @@ function ClaimContent() {
                 </div>
                 <Button
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                  onClick={() => window.location.href = "/dashboard"}
+                  onClick={() => window.location.href = "/"}
                 >
-                  Go to Dashboard
+                  Go to Homepage
                 </Button>
               </CardContent>
             </Card>
