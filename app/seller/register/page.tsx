@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { CreatorRegisterForm } from "@/components/seller/creator-register-form";
 import { WalletConnect } from "@/components/wallet/connect";
+import { Loader2 } from "lucide-react";
 
 interface CreatorFormData {
   address: string;
@@ -14,10 +15,46 @@ interface CreatorFormData {
   category: string;
 }
 
+interface AgentStatus {
+  hasAgent: boolean;
+  agentId?: number;
+  status: "none" | "pending" | "verified";
+  claimToken?: string;
+}
+
 export default function SellerRegisterPage() {
   const router = useRouter();
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [checkingStatus, setCheckingStatus] = useState(false);
+
+  const handleWalletConnect = async (address: string) => {
+    setWalletAddress(address);
+    setCheckingStatus(true);
+
+    try {
+      const response = await fetch(`/api/agent?address=${address}`);
+      const result = await response.json();
+
+      if (result.success && result.data) {
+        const status: AgentStatus = result.data;
+
+        if (status.hasAgent && status.status === "verified") {
+          router.push(`/dashboard?agentId=${status.agentId}`);
+          return;
+        }
+
+        if (status.hasAgent && status.status === "pending" && status.claimToken) {
+          router.push(`/claim/${status.claimToken}`);
+          return;
+        }
+      }
+    } catch (error) {
+      console.error("Error checking agent status:", error);
+    } finally {
+      setCheckingStatus(false);
+    }
+  };
 
   const handleSubmit = async (data: CreatorFormData) => {
     setIsLoading(true);
@@ -67,16 +104,25 @@ export default function SellerRegisterPage() {
           </div>
 
           <div className="space-y-6">
-            <WalletConnect
-              onConnect={(address) => setWalletAddress(address)}
-              onDisconnect={() => setWalletAddress("")}
-            />
+            {checkingStatus ? (
+              <div className="flex items-center justify-center py-8">
+                <Loader2 className="w-8 h-8 animate-spin text-accent mr-2" />
+                <span className="text-muted-foreground">Checking your status...</span>
+              </div>
+            ) : (
+              <WalletConnect
+                onConnect={handleWalletConnect}
+                onDisconnect={() => setWalletAddress("")}
+              />
+            )}
 
-            <CreatorRegisterForm
-              walletAddress={walletAddress}
-              onSubmit={handleSubmit}
-              isLoading={isLoading}
-            />
+            {walletAddress && !checkingStatus && (
+              <CreatorRegisterForm
+                walletAddress={walletAddress}
+                onSubmit={handleSubmit}
+                isLoading={isLoading}
+              />
+            )}
           </div>
         </div>
       </section>
