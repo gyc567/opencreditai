@@ -64,6 +64,7 @@ export function Navbar({ onSearch }: NavbarProps) {
     { label: "Sell Skills", href: "/seller" },
     { label: "Blog", href: "/blog" },
     { label: "Audit", href: "/audit" },
+    { label: "Skill Creator", href: "/skills/create" },
     { label: t.categories, href: "#categories" },
     { label: t.installGuide, href: "#install" },
     { label: t.faq, href: "#faq" },
