@@ -6,8 +6,8 @@ const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS
   : [
       'http://localhost:3000',
       'http://localhost:3001',
-      'https://openclaw-skills.vercel.app',
-      'https://openclaw-skills-git-*.vercel.app',
+      'https://opencreditai.vercel.app',
+      'https://opencreditai-git-*.vercel.app',
     ];
 
 /**

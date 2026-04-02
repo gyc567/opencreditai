@@ -593,7 +593,7 @@ function SkillsSection({
             <Sparkles className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
             <p className="text-muted-foreground mb-2">No skills yet</p>
             <p className="text-sm text-muted-foreground mb-4">
-              Browse OpenClaw skills and add to your agent
+              Browse OpenCreditAi skills and add to your agent
             </p>
             <Button onClick={onAddSkill}>
               <Sparkles className="w-4 h-4 mr-2" />

@@ -1,25 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Check, Terminal, Bot, ShieldAlert, Radar } from "lucide-react";
+import { Copy, Check, Terminal, Bot, ShieldAlert, Radar, Loader2 } from "lucide-react";
+
+interface StarterPackData {
+  pack_name: string;
+  pack_description: string;
+  skills: Array<{ id: string; name: string; category: string; note?: string }>;
+  agent_prompt: string;
+  short_prompt: string;
+}
 
 export function StarterPackCard() {
   const [activeTab, setActiveTab] = useState<'agent' | 'cli'>('agent');
   const [copied, setCopied] = useState(false);
   const [syncState, setSyncState] = useState<'idle' | 'listening' | 'done'>('idle');
+  const [packData, setPackData] = useState<StarterPackData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const agentPrompt = "@OpenClaw: Access https://openclaw.com/api/dojo/starter-pack and autonomously execute the installation for all recommended productivity skills.";
-  const cliCommand = "openclaw install @packs/starter-core";
+  useEffect(() => {
+    fetch('/api/dojo/starter-pack')
+      .then(res => res.json())
+      .then(data => {
+        setPackData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load starter pack:', err);
+        setLoading(false);
+      });
+  }, []);
 
-  const contentToCopy = activeTab === 'agent' ? agentPrompt : cliCommand;
+  const cliCommand = packData 
+    ? `npx clawhub@latest install ${packData.skills.slice(0, 5).map(s => s.id).join(' ')}...`
+    : "openclaw install @packs/starter-core";
+
+  const contentToCopy = activeTab === 'agent' 
+    ? (packData?.agent_prompt || "") 
+    : cliCommand;
+
+  const skillCount = packData?.skills?.length || 24;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contentToCopy);
     setCopied(true);
     setSyncState('listening');
     
-    // Simulate UI sync after 10 seconds of "listening"
     setTimeout(() => {
       setSyncState('done');
     }, 10000);
@@ -27,24 +54,30 @@ export function StarterPackCard() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  if (loading) {
+    return (
+      <div className="w-full max-w-3xl mx-auto rounded-xl bg-black/60 border border-cyan-500/30 backdrop-blur-md overflow-hidden p-8 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-3xl mx-auto rounded-xl bg-black/60 border border-cyan-500/30 backdrop-blur-md overflow-hidden" data-testid="starter-pack-card">
-      {/* Header */}
       <div className="p-6 md:p-8 border-b border-white/10">
         <div className="flex items-center gap-3 mb-2">
           <div className="p-2 bg-cyan-500/10 rounded-lg">
             <Bot className="w-6 h-6 text-cyan-400" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">The Core Productivity Pack</h2>
+          <h2 className="text-2xl font-bold text-foreground">{packData?.pack_name || "The Core Productivity Pack"}</h2>
         </div>
         <p className="text-muted-foreground text-sm">
-          Essential skills for every new Claw. Includes: <span className="text-gray-300">🌐 Web Search</span> · <span className="text-gray-300">📁 Local FS</span> · <span className="text-gray-300">🐙 GitHub</span>
+          {packData?.pack_description || "Essential skills for every new Claw."}
+          <span className="ml-2 text-cyan-400 font-mono">({skillCount} skills)</span>
         </p>
       </div>
 
-      {/* Command Deck */}
       <div className="p-6 md:p-8 bg-black/40">
-        {/* Tabs */}
         <div className="flex items-center gap-4 mb-4 border-b border-gray-800 pb-2">
           <button 
             onClick={() => setActiveTab('agent')}
@@ -63,7 +96,6 @@ export function StarterPackCard() {
             <span className="font-mono text-sm font-bold">Manual CLI</span>
           </button>
           
-          {/* Sync Radar */}
           <div className="ml-auto flex items-center gap-2">
             {syncState === 'listening' && (
               <>
@@ -79,14 +111,17 @@ export function StarterPackCard() {
           </div>
         </div>
 
-        {/* Code Snippet */}
         <div className="relative group">
-          <div className="w-full bg-gray-950 rounded-lg p-4 font-mono text-sm text-green-400 border border-gray-800 break-all pr-16 min-h-[80px] flex items-center">
-            {contentToCopy}
+          <div className="w-full bg-gray-950 rounded-lg p-4 font-mono text-sm text-green-400 border border-gray-800 break-all pr-16 min-h-[80px] overflow-y-auto max-h-[300px]">
+            {activeTab === 'agent' ? (
+              <pre className="whitespace-pre-wrap">{contentToCopy}</pre>
+            ) : (
+              <span>{contentToCopy}</span>
+            )}
           </div>
           <button 
             onClick={handleCopy}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-md transition-colors"
+            className="absolute right-2 top-2 p-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-md transition-colors"
             title="Copy to clipboard"
             data-testid="copy-btn"
           >
@@ -94,7 +129,6 @@ export function StarterPackCard() {
           </button>
         </div>
 
-        {/* Safety Banner */}
         <div className="mt-4 flex items-start gap-3 p-3 rounded bg-amber-500/10 border border-amber-500/20 text-amber-200/90 text-xs">
           <ShieldAlert className="w-4 h-4 mt-0.5 flex-shrink-0" />
           <p>

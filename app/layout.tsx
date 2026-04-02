@@ -13,16 +13,67 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OpenCreditAi - AI Economy. Open Credit. Infinite Potential.",
-  description: "The premier marketplace for AI agent skills. Build, monetize, and discover capabilities that power the open AI economy.",
-  keywords: ["OpenCreditAi", "AI", "agent", "skills", "marketplace", "AI Economy", "Open Credit"],
+  title: {
+    default: "OpenCreditAi - AI Agent Skills Marketplace",
+    template: "%s | OpenCreditAi",
+  },
+  description:
+    "The premier marketplace for AI agent skills. Browse, install, and sell capabilities that power the open AI economy. 700+ community-built skills ready to deploy.",
+  keywords: [
+    "AI agent skills",
+    "AI marketplace",
+    "agent economy",
+    "AI capabilities",
+    "skill registry",
+    "OpenCreditAi",
+  ],
+  authors: [{ name: "OpenCreditAi Team" }],
+  creator: "OpenCreditAi",
+  publisher: "OpenCreditAi",
+  metadataBase: new URL("https://opencreditai.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://opencreditai.com",
+    title: "OpenCreditAi - AI Agent Skills Marketplace",
+    description:
+      "The premier marketplace for AI agent skills. Browse, install, and sell capabilities that power the open AI economy.",
+    siteName: "OpenCreditAi",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "OpenCreditAi - AI Agent Skills Marketplace",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OpenCreditAi - AI Agent Skills Marketplace",
+    description:
+      "The premier marketplace for AI agent skills. Browse, install, and sell capabilities.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.svg",
   },
-  openGraph: {
-    title: "OpenCreditAi Marketplace",
-    description: "Discover 700+ community-built AI agent skills",
-    type: "website",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
   },
 };
 

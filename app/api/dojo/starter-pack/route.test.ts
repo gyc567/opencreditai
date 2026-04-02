@@ -12,10 +12,11 @@ describe('GET /api/dojo/starter-pack', () => {
     
     expect(json.agent_protocol).toBe("AOTUI-v1");
     expect(json.safe_mode_required).toBe(true);
-    expect(json.actions).toHaveLength(3);
+    expect(json.pack_name).toBe("Core Productivity Pack");
+    expect(json.skills).toHaveLength(7);
     
-    const githubAction = json.actions.find((a: any) => a.skill_id === 'skill_github');
-    expect(githubAction).toBeDefined();
-    expect(githubAction.dependencies.requires).toContain('GITHUB_TOKEN');
+    const githubSkill = json.skills.find((s: any) => s.id === 'self-improving-agent');
+    expect(githubSkill).toBeDefined();
+    expect(githubSkill.category).toBe("ai-enhancement");
   });
 });

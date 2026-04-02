@@ -77,7 +77,7 @@ export default function ClawDojoPage() {
             <div className="grid md:grid-cols-3 gap-6">
               <SkillPackCard
                 name="Essential Pack"
-                description="Must-have skills for every new OpenClaw agent. Start here!"
+                description="Must-have skills for every new OpenCreditAi agent. Start here!"
                 skillIds={essentialSkills}
                 icon={BookOpen}
                 color="#10b981"

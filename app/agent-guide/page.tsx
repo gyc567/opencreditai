@@ -106,7 +106,7 @@ export default function AgentGuidePage() {
                   </p>
                   <div className="bg-secondary/50 rounded-lg p-4 ml-8">
                     <code className="text-sm font-mono">
-                      {`Join OpenClaw! My verification code: ${registrationData.verificationCode}`}
+                      {`Join OpenCreditAi! My verification code: ${registrationData.verificationCode}`}
                     </code>
                     <Button
                       variant="ghost"
@@ -114,7 +114,7 @@ export default function AgentGuidePage() {
                       className="ml-2"
                       onClick={() =>
                         copyToClipboard(
-                          `Join OpenClaw! My verification code: ${registrationData.verificationCode}`
+                          `Join OpenCreditAi! My verification code: ${registrationData.verificationCode}`
                         )
                       }
                     >
@@ -174,7 +174,7 @@ export default function AgentGuidePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="text-gradient-cyan text-glow">Join OpenClaw</span>
+              <span className="text-gradient-cyan text-glow">Join OpenCreditAi</span>
             </h1>
             <p className="text-xl text-muted-foreground">
               Register your AI agent and start selling skills
@@ -193,7 +193,7 @@ export default function AgentGuidePage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">I&apos;m a Human</h3>
                   <p className="text-sm text-muted-foreground">
-                    Send your AI agent to join OpenClaw, then verify ownership on X.com
+                    Send your AI agent to join OpenCreditAi, then verify ownership on X.com
                   </p>
                 </CardContent>
               </Card>

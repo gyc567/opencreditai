@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =============================================================================
-# OpenClaw Skills - Vercel Deployment Script
+# OpenCreditAi - Vercel Deployment Script
 # =============================================================================
 # Project ID: prj_nLrlrqnaCGLyk2U10NtGKBI1i8uk
 # Usage: ./deploy.sh [--production] [--preview]
@@ -18,7 +18,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_ID="prj_nLrlrqnaCGLyk2U10NtGKBI1i8uk"
-PROJECT_NAME="openclaw-skills"
+PROJECT_NAME="opencreditai"
 DEPLOY_MODE="preview"  # Default to preview
 
 # =============================================================================
@@ -44,7 +44,7 @@ log_error() {
 print_header() {
     echo ""
     echo "=============================================="
-    echo "  OpenClaw Skills - Vercel Deployment"
+    echo "  OpenCreditAi - Vercel Deployment"
     echo "=============================================="
     echo ""
 }

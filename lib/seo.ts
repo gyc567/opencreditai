@@ -1,0 +1,8 @@
+import { Metadata } from "next";
+
+export const NOINDEX_METADATA: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};

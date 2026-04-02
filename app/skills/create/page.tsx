@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Loader2, Copy, Download, Rocket, Sparkles, Check, Zap } from "lucide-react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const EXAMPLE_PROMPTS = [
   { id: 1, label: "API Docs", prompt: "A skill that generates beautiful API documentation from TypeScript interfaces and JSDoc comments" },
@@ -125,21 +127,23 @@ Output: Processed output
   };
 
   return (
-    <div className="min-h-screen pt-14 pb-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="py-12">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full text-accent text-sm font-mono mb-4">
-              <Zap className="w-4 h-4" />
-              Instant Skill Generator
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
+      <Navbar onSearch={() => {}} />
+      <main className="flex-1 pt-14 pb-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="py-12">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full text-accent text-sm font-mono mb-4">
+                <Zap className="w-4 h-4" />
+                Instant Skill Generator
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+                Describe what you want, get a working skill
+              </h1>
+              <p className="text-muted-foreground text-lg">
+                Create OpenCreditAi skills in seconds. No coding required.
+              </p>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              Describe what you want, get a working skill
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              Create OpenClaw skills in seconds. No coding required.
-            </p>
-          </div>
 
           <Card className="bg-card border-border">
             <CardContent className="p-6">
@@ -240,6 +244,8 @@ Output: Processed output
           )}
         </div>
       </div>
+      </main>
+      <Footer />
     </div>
   );
 }

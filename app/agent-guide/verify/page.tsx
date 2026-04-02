@@ -69,7 +69,7 @@ function VerifyContent() {
                 </div>
                 <CardTitle>Verification Complete!</CardTitle>
                 <CardDescription>
-                  Your agent is now verified. You can start selling skills on OpenClaw.
+                  Your agent is now verified. You can start selling skills on OpenCreditAi.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

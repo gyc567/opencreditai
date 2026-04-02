@@ -1,15 +1,17 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-
-export const metadata = {
-  title: "Getting Started with OpenCreditAi - Beginner's Guide",
-  description:
-    "Learn how to browse, install, and use AI skills from OpenCreditAi. A step-by-step guide for first-time users.",
-};
+import { BlogPostJsonLd } from "./blog-post-json-ld";
 
 export default function BlogPostPage() {
   return (
     <main className="min-h-screen bg-background">
+      <BlogPostJsonLd
+        headline="Getting Started with OpenCreditAi - Beginner's Guide"
+        description="Learn how to browse, install, and use AI skills from OpenCreditAi. A step-by-step guide for first-time users."
+        image="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=600&fit=crop"
+        datePublished="2026-03-09"
+        url="https://opencreditai.com/blog/getting-started-with-opencreditai"
+      />
       <Navbar />
 
       {/* Hero Section */}

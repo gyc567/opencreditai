@@ -32,6 +32,6 @@ export function getAllowedOrigins(): string[] {
     : [
         'http://localhost:3000',
         'http://localhost:3001',
-        'https://openclaw-skills.vercel.app',
+        'https://opencreditai.vercel.app',
       ];
 }

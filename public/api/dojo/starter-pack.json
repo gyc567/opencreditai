@@ -1,0 +1,56 @@
+{
+  "id": "starter-pack",
+  "name": "Core Productivity Pack",
+  "description": "Essential skills for every new OpenCreditAi agent",
+  "agentPrompt": "请执行以下批量安装任务：\n\n## 数据源\n\n你需要在以下服务器查找和安装 skills：\n1. **主服务器**: https://clawhub.ai\n2. **次服务器**: https://skillhub.tencent.com\n\n## 安装方式\n\n使用以下命令安装 skills：\n- `npx clawhub@latest install <skill-name>` - 从 clawhub.ai 安装\n\n## 需要安装的 Skills\n\n### 质量保障类\n- code-change-verification - 代码变更验证\n- security-review - 安全审查\n- audit - 界面质量审计\n\n### 开发规范类\n- frontend-patterns - 前端编码规范\n- backend-patterns - 后端编码规范\n\n### 部署运维类\n- deploy - 部署\n- integration-tests - 集成测试\n\n### UI/UX 设计类\n- frontend-design - 前端界面设计\n- animate - 动画与微交互\n- adapt - 响应式适配\n- optimize - 性能优化\n- polish - 打磨细节\n- harden - 强化界面\n\n### 设计系统类\n- extract - 设计系统提取\n- normalize - 设计规范化\n- distill - 简化设计\n- onboard - 用户引导设计\n\n### 体验增强类\n- delight - 愉悦体验设计\n- bolder - 增强视觉效果\n- quieter - 降低视觉强度\n- clarify - 文案改进\n- critique - 设计评价\n\n### 特殊技能类\n- ljg-roundtable - 圆桌讨论框架（从 https://github.com/lijigang/ljg-skills 安装）\n- teach-impeccable - 教学设置\n\n## 执行步骤\n\n1. 首先尝试使用 `clawhub search <skill-name>` 搜索 skill 是否存在于 clawhub.ai\n2. 如果找到，使用 `npx clawhub@latest install <skill-name>` 安装\n3. 如果 clawhub.ai 找不到，尝试在 skillhub.tencent.com 搜索\n4. 如果两个服务器都找不到对应 skill，从项目本地 .agents/skills/ 目录安装\n5. 对于 ljg-roundtable，需要从 GitHub 仓库安装：https://github.com/lijigang/ljg-skills\n\n## 验证安装\n\n安装完成后，运行以下命令验证：\n- 列出所有已安装的 skills\n- 确认数量达到预期\n\n## 输出格式\n\n完成后报告：\n- 安装了多少个 skills\n- 哪些 skills 从哪个服务器安装的\n- 任何安装失败的情况",
+  "shortPrompt": "使用 npx clawhub@latest install 安装以下 skills：code-change-verification, security-review, audit, frontend-patterns, backend-patterns, deploy, integration-tests, frontend-design, animate, adapt, optimize, polish, harden, extract, normalize, distill, onboard, delight, bolder, quieter, clarify, critique, teach-impeccable, ljg-roundtable。从 clawhub.ai 搜索安装，如果找不到则从 .agents/skills/ 本地安装。ljg-roundtable 从 GitHub 安装。",
+  "skills": [
+    "code-change-verification",
+    "security-review",
+    "audit",
+    "frontend-patterns",
+    "backend-patterns",
+    "deploy",
+    "integration-tests",
+    "frontend-design",
+    "animate",
+    "adapt",
+    "optimize",
+    "polish",
+    "harden",
+    "extract",
+    "normalize",
+    "distill",
+    "onboard",
+    "delight",
+    "bolder",
+    "quieter",
+    "clarify",
+    "critique",
+    "teach-impeccable",
+    "ljg-roundtable"
+  ],
+  "sources": [
+    {
+      "name": "clawhub.ai",
+      "type": "primary",
+      "installCommand": "npx clawhub@latest install"
+    },
+    {
+      "name": "skillhub.tencent.com",
+      "type": "secondary",
+      "installCommand": "npx clawhub@latest install"
+    },
+    {
+      "name": "local",
+      "type": "fallback",
+      "path": ".agents/skills/"
+    },
+    {
+      "name": "GitHub",
+      "type": "special",
+      "repo": "lijigang/ljg-skills",
+      "skills": ["ljg-roundtable"]
+    }
+  ]
+}
