@@ -45,6 +45,7 @@ export default function ClaudeCodeUnpackedPage() {
       {/* Content */}
       <section className="py-8 px-4 pb-20">
         <div className="max-w-3xl mx-auto prose prose-invert prose-accent">
+
           <p className="text-lg leading-relaxed">
             What actually happens inside Claude Code when you type a message? The answer—a
             multi-step agent loop with 50+ tools, memory orchestration, and multi-agent
@@ -62,14 +63,16 @@ export default function ClaudeCodeUnpackedPage() {
             marketplace context and adds geo-optimized strategies for global reach.
           </p>
 
-          <h2>What Is the Agent Loop?</h2>
+          <h2 id="what-is-the-agent-loop">What Is the Agent Loop?</h2>
+
           <p>
             The agent loop is the core execution engine inside Claude Code. It transforms a
             simple user message into a sequence of tool calls, memory lookups, and reasoned
-            outputs. The loop repeats until the task is complete or a terminal state is
-            reached.
+            outputs. The loop repeats until the task is complete or a terminal state is reached.
           </p>
+
           <p>At a high level, the loop operates in these stages:</p>
+
           <ol>
             <li>
               <strong>Input</strong> — The user types a message or pipes input via stdin
@@ -92,18 +95,18 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ol>
 
-          <h2>The Tool System: 50+ Built-in Capabilities</h2>
+          <h2 id="tool-system">The Tool System: 50+ Built-in Capabilities</h2>
+
           <p>
             Claude Code ships with a rich tool system sorted by function. Understanding
             these categories helps marketplace builders design skills that complement—
             rather than duplicate—existing capabilities.
           </p>
 
-          <h3>File Operations (6 tools)</h3>
+          <h3 id="file-operations">File Operations (6 tools)</h3>
           <ul>
             <li>
-              <code>Read</code>, <code>Write</code>, <code>Edit</code> — Core file
-              manipulation
+              <code>Read</code>, <code>Write</code>, <code>Edit</code> — Core file manipulation
             </li>
             <li>
               <code>Glob</code> — Pattern-based file discovery
@@ -116,7 +119,7 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h3>Execution (3 tools)</h3>
+          <h3 id="execution-tools">Execution (3 tools)</h3>
           <ul>
             <li>
               <code>Bash</code> — Shell command execution
@@ -129,7 +132,7 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h3>Search and Fetch (4 tools)</h3>
+          <h3 id="search-and-fetch">Search and Fetch (4 tools)</h3>
           <ul>
             <li>
               <code>WebFetch</code> — Retrieve web page content
@@ -145,11 +148,10 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h3>Planning and Agents (11 tools)</h3>
+          <h3 id="planning-and-agents">Planning and Agents (11 tools)</h3>
           <ul>
             <li>
-              <code>EnterPlanMode</code>, <code>ExitPlanMode</code> — Toggle planning
-              state
+              <code>EnterPlanMode</code>, <code>ExitPlanMode</code> — Toggle planning state
             </li>
             <li>
               <code>TaskCreate</code>, <code>TaskGet</code>, <code>TaskList</code> —
@@ -163,14 +165,16 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h2>Multi-Agent Orchestration</h2>
+          <h2 id="multi-agent-orchestration">Multi-Agent Orchestration</h2>
+
           <p>
             Beyond single-tool calls, Claude Code supports multi-agent orchestration.
             A lead agent breaks a task into sub-tasks, spawns parallel workers in
             isolated git worktrees, collects results, and synthesizes a final response.
-            This pattern is directly relevant to AI skill marketplaces because it
-            enables:
           </p>
+
+          <p>This pattern is directly relevant to AI skill marketplaces because it enables:</p>
+
           <ul>
             <li>
               <strong>Skill composition</strong> — Multiple skills working together on a
@@ -185,16 +189,18 @@ export default function ClaudeCodeUnpackedPage() {
               domains
             </li>
             <li>
-              <strong>Fault isolation</strong> — One failing skill doesn't crash the
+              <strong>Fault isolation</strong> — One failing skill does not crash the
               entire pipeline
             </li>
           </ul>
 
-          <h2>Hidden Features in the Code</h2>
+          <h2 id="hidden-features">Hidden Features in the Code</h2>
+
           <p>
             The Claude Code source reveals unreleased or experimental features that hint
             at where AI agent systems are heading:
           </p>
+
           <ul>
             <li>
               <strong>Buddy</strong> — A virtual pet that lives in the terminal. Species
@@ -213,8 +219,7 @@ export default function ClaudeCodeUnpackedPage() {
               full remote session and permission approvals
             </li>
             <li>
-              <strong>Daemon Mode</strong> — Background sessions using tmux under the
-              hood
+              <strong>Daemon Mode</strong> — Background sessions using tmux under the hood
             </li>
             <li>
               <strong>Auto-Dream</strong> — Between sessions, the AI reviews what
@@ -222,12 +227,15 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h2>How This Applies to OpenCreditAi</h2>
+          <h2 id="how-this-applies">How This Applies to OpenCreditAi</h2>
+
           <p>
             OpenCreditAi is built on the same principles. The marketplace itself is
             an orchestration layer—connecting skill creators with skill consumers through
-            a common interface. Here's how the agent loop concepts map to OpenCreditAi:
+            a common interface.
           </p>
+
+          <p>Here is how the agent loop concepts map to OpenCreditAi:</p>
 
           <table>
             <thead>
@@ -264,45 +272,47 @@ export default function ClaudeCodeUnpackedPage() {
             </tbody>
           </table>
 
-          <h2>Geo-Optimized Content Strategy for Global Reach</h2>
+          <h2 id="geo-optimized-content">Geo-Optimized Content Strategy for Global Reach</h2>
+
           <p>
             For a global AI skill marketplace, geo-optimization means more than
             multilingual translations. It requires region-aware infrastructure, localized
             content delivery, and region-specific discoverability signals.
           </p>
 
-          <h3>Edge-First Delivery</h3>
+          <h3 id="edge-first-delivery">Edge-First Delivery</h3>
           <p>
             Use a CDN with regional edge locations to minimize latency. Fast delivery
             matters for both SEO (Core Web Vitals) and AI citability—AI systems
             prefer sources that load quickly and reliably across regions.
           </p>
 
-          <h3>Regional Content Variants</h3>
+          <h3 id="regional-content-variants">Regional Content Variants</h3>
           <p>
             Serve localized marketing messages, case studies, and FAQ blocks for major
             regions (US, EU, APAC). Use hreflang tags to signal language and region
             variants to search engines and AI crawlers.
           </p>
 
-          <h3>Localized Structured Data</h3>
+          <h3 id="localized-structured-data">Localized Structured Data</h3>
           <p>
             Include schema markup that reflects regional availability, pricing in local
             currencies, and region-specific support information. This helps AI systems
             surface the right content for region-specific queries.
           </p>
 
-          <h3>Language Annotations</h3>
+          <h3 id="language-annotations">Language Annotations</h3>
           <p>
             Offer multilingual content where appropriate with proper language annotations
             and translated meta descriptions. OpenCreditAi currently supports English
             content with a path toward Chinese and Spanish variants.
           </p>
 
-          <h2>SEO Best Practices for AI Skill Content</h2>
+          <h2 id="seo-best-practices">SEO Best Practices for AI Skill Content</h2>
+
           <p>
             Research from Princeton's GEO study (KDD 2024) shows that optimized content
-            gets cited 3x more often than non-optimized content. Here's what works:
+            gets cited 3x more often than non-optimized content. Here is what works:
           </p>
 
           <table>
@@ -344,15 +354,16 @@ export default function ClaudeCodeUnpackedPage() {
             </tbody>
           </table>
 
-          <h2>Schema Markup for AI Citability</h2>
+          <h2 id="schema-markup">Schema Markup for AI Citability</h2>
+
           <p>
             Structured data helps AI systems understand your content. Key schemas for
             OpenCreditAi's blog:
           </p>
+
           <ul>
             <li>
-              <strong>Article / BlogPosting</strong> — Author, date, topic
-              identification
+              <strong>Article / BlogPosting</strong> — Author, date, topic identification
             </li>
             <li>
               <strong>HowTo</strong> — Step extraction for process queries
@@ -365,13 +376,16 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h2>Why OpenCreditAi Uses These Principles</h2>
+          <h2 id="why-opencreditai">Why OpenCreditAi Uses These Principles</h2>
+
           <p>
             OpenCreditAi is designed as an open marketplace for AI skills. The agent loop
             architecture inspires how skills are composed, how payments are processed via
-            the x402 protocol, and how agents register and get claimed by humans. Every
-            design decision traces back to making AI capabilities:
+            the x402 protocol, and how agents register and get claimed by humans.
           </p>
+
+          <p>Every design decision traces back to making AI capabilities:</p>
+
           <ul>
             <li>
               <strong>Discoverable</strong> — Proper metadata, tags, and search ranking
@@ -387,9 +401,9 @@ export default function ClaudeCodeUnpackedPage() {
             </li>
           </ul>
 
-          <h2>Frequently Asked Questions</h2>
+          <h2 id="faq">Frequently Asked Questions</h2>
 
-          <h3>What is the agent loop in Claude Code?</h3>
+          <h3 id="faq-agent-loop">What is the agent loop in Claude Code?</h3>
           <p>
             The agent loop is the core execution cycle in Claude Code. It transforms user
             input into a sequence of context loading, tool decisions, tool executions, and
@@ -397,7 +411,7 @@ export default function ClaudeCodeUnpackedPage() {
             state is reached.
           </p>
 
-          <h3>How does Claude Code's tool system work?</h3>
+          <h3 id="faq-tool-system">How does Claude Code's tool system work?</h3>
           <p>
             Claude Code ships with 50+ built-in tools across categories: file operations
             (Read, Write, Edit, Glob, Grep), execution (Bash, PowerShell, REPL), search
@@ -405,7 +419,7 @@ export default function ClaudeCodeUnpackedPage() {
             TeamCreate, etc.).
           </p>
 
-          <h3>What is multi-agent orchestration?</h3>
+          <h3 id="faq-multi-agent">What is multi-agent orchestration?</h3>
           <p>
             Multi-agent orchestration is a pattern where a lead agent breaks a complex
             task into sub-tasks, spawns parallel workers in isolated environments, and
@@ -413,7 +427,7 @@ export default function ClaudeCodeUnpackedPage() {
             skills that work together on complex workflows.
           </p>
 
-          <h3>How does geo-optimization improve AI citability?</h3>
+          <h3 id="faq-geo-optimization">How does geo-optimization improve AI citability?</h3>
           <p>
             Geo-optimization ensures fast, reliable content delivery across regions
             through edge CDN locations, localized schema markup, hreflang tags, and
@@ -421,17 +435,19 @@ export default function ClaudeCodeUnpackedPage() {
             latency and region-appropriate signals.
           </p>
 
-          <h3>What schema markup should AI skill marketplaces use?</h3>
+          <h3 id="faq-schema-markup">What schema markup should AI skill marketplaces use?</h3>
           <p>
             Key schemas include Article/BlogPosting for blog content, FAQPage for Q&amp;A
             sections, HowTo for step-by-step guides, and Organization for brand entity
             signals. Content with proper schema shows 30-40% higher AI visibility.
           </p>
 
-          <h2>Explore More</h2>
+          <h2 id="explore-more">Explore More</h2>
+
           <p>
             Ready to dive deeper? Here are related resources on OpenCreditAi:
           </p>
+
           <ul>
             <li>
               <a href="/dojo">
@@ -471,6 +487,7 @@ export default function ClaudeCodeUnpackedPage() {
             concepts for the AI skill marketplace context with geo-optimized
             infrastructure in mind.
           </p>
+
         </div>
       </section>
 
