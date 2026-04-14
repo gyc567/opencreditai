@@ -1,0 +1,89 @@
+{
+  "skill": "auto-x-marketing",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "name": "trigger_viral_copywriter",
+      "prompt": "帮我写一条推广我 AI 笔记工具的推文",
+      "expected_behavior": "生成 5 个文案变体，包含 hook, 内容, CTA",
+      "criteria": [
+        "生成多个文案变体",
+        "包含推广内容",
+        "有 CTA 引导"
+      ]
+    },
+    {
+      "name": "trigger_audience_analytics",
+      "prompt": "分析我的粉丝画像",
+      "expected_behavior": "输出受众分析报告",
+      "criteria": [
+        "分析粉丝特征",
+        "提供数据洞察",
+        "给出增长建议"
+      ]
+    },
+    {
+      "name": "trigger_content_calendar",
+      "prompt": "帮我规划下个月的内容日历",
+      "expected_behavior": "生成本月内容日历",
+      "criteria": [
+        "包含发布日期",
+        "有内容主题",
+        "有时问段安排"
+      ]
+    },
+    {
+      "name": "trigger_campaign_optimizer",
+      "prompt": "帮我设置一个 X Ads 广告系列",
+      "expected_behavior": "生成广告投放方案",
+      "criteria": [
+        "包含受众定向",
+        "有预算建议",
+        "有时间安排"
+      ]
+    },
+    {
+      "name": "daily_routine",
+      "prompt": "今天怎么样",
+      "expected_behavior": "输出早晨简报",
+      "criteria": [
+        "包含数据概览",
+        "有昨日表现",
+        "给出今日建议"
+      ]
+    },
+    {
+      "name": "bootstrap_onboarding",
+      "prompt": "帮我设置 auto-x-marketing",
+      "expected_behavior": "触发 onboarding 流程",
+      "criteria": [
+        "账户诊断",
+        "目标确认",
+        "生成启动计划"
+      ]
+    },
+    {
+      "name": "chinese_trigger",
+      "prompt": "帮我运营 X 账号",
+      "expected_behavior": "识别为技能触发",
+      "criteria": [
+        "正确识别技能",
+        "开始执行任务"
+      ]
+    },
+    {
+      "name": "english_trigger",
+      "prompt": "帮我做 twitter marketing",
+      "expected_behavior": "识别为技能触发 (英文)",
+      "criteria": [
+        "正确识别技能",
+        "开始执行任务"
+      ]
+    }
+  ],
+  "evaluation_notes": {
+    "run_frequency": "每次代码变更后运行",
+    "pass_threshold": "8/8 通过",
+    "manual_override": "创意内容质量主观评估，允许 6/8 通过"
+  }
+}
