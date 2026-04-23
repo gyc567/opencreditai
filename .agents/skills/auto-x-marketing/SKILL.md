@@ -205,6 +205,55 @@ auto-x-marketing/
 
 ## Integration
 
+### Twitter Data Fetching (x-tweet-fetcher)
+
+This skill includes **x-tweet-fetcher** as a built-in utility for fetching Twitter/X data without API authentication.
+
+#### Usage
+
+```bash
+python3 utils/twitter_fetcher.py --mode <operation> [options]
+```
+
+#### Available Operations
+
+| Mode | Description | Example |
+|------|-------------|---------|
+| timeline | Fetch user tweets | `--mode timeline --user elonmusk --limit 10` |
+| search | Search by keyword | `--mode search --query "AI agent" --limit 20` |
+| tweet | Fetch single tweet | `--mode tweet --url "https://x.com/user/status/123"` |
+| replies | Fetch tweet replies | `--mode replies --url "https://x.com/user/status/123"` |
+| mentions | Monitor user mentions | `--mode mentions --user @yourhandle` |
+| list | Fetch X List tweets | `--mode list --list_id 1455045069516357634` |
+| article | Fetch X Article | `--mode article --url "https://x.com/user/article/123"` |
+
+#### Backends
+
+- `auto` (default): Try Nitter first, fallback to browser
+- `nitter`: Zero dependencies, requires self-hosted Nitter
+- `browser`: Full features, requires Playwright
+
+#### Requirements
+
+```
+Python 3.7+
+```
+
+Optional (for browser backend):
+```
+pip install playwright
+playwright install chromium
+```
+
+#### Configuration
+
+Set Nitter URL for nitter/backend mode:
+```bash
+export NITTER_URL=http://127.0.0.1:8788
+```
+
+Note: Public Nitter instances are unreliable as of March 2026. Use `--backend browser` or self-host Nitter.
+
 ### Sub-Skill 调用规则
 
 | 用户需求 | 调用技能 | 优先级 |

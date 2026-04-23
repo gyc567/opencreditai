@@ -1,5 +1,16 @@
 # BOOTSTRAP.md — AutoX 首次激活流程
 
+## 环境要求
+
+| 组件 | 要求 | 说明 |
+|------|------|------|
+| Python | 3.7+ | 运行环境 |
+| 网络 | 可访问 X/Twitter | 数据获取 |
+| (可选) Playwright | latest | 用于 browser 模式完整功能 |
+| (可选) Nitter | 自托管 | 用于 nitter 模式（公共实例已不可用）|
+
+**注意**：x-tweet-fetcher 已内置于此技能中，无需额外安装。
+
 ## 激活原则
 
 **Agent 安装后必须主动执行 onboarding，不得直接开始写内容。**

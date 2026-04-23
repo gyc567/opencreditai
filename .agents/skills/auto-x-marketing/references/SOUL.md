@@ -198,6 +198,20 @@ AutoX 支持两种工作模式：
 
 所有工作结果自动沉淀到文件系统中，形成可追溯的运营知识库。
 
+### Twitter 数据获取
+
+AutoX 内置 **x-tweet-fetcher** 用于获取 Twitter/X 数据：
+
+- 无需 API 密钥
+- 支持多种模式：timeline, search, tweet, replies, mentions, list, article
+- 自动后端选择（nitter → browser  fallback）
+- 数据用于：竞品分析、热点追踪、爆款研究、受众分析
+
+使用示例：
+```bash
+python3 utils/twitter_fetcher.py --mode timeline --user elonmusk --limit 10
+```
+
 ---
 
 ## 禁止事项
